@@ -1,6 +1,6 @@
 ﻿namespace GymManagement.Models.AccountModels;
 
-public class ProfileModel
+public class ProfileEditModel
 {
 	public string UserName { get; set; }
 	public string Email { get; set; }
@@ -9,14 +9,16 @@ public class ProfileModel
 	public string PhoneNumber { get; set; }
 	public string UserImg { get; set; }
 	public string PackageName { get; set; }
-	public DateTime StartDate { get; set; }
-	public DateTime EndDate { get; set; }
+	public DateOnly? StartDate { get; set; }
+	public DateOnly? EndDate { get; set; }
+	public string? Bio { get; set; }
+
 	public List<MemberPackage> memPack { get; set; } = new List<MemberPackage>();
 
 	public class MemberPackage
 	{
 		public int? PackageId { get; set; }
-		public DateTime StartDate { get; set; }
-		public DateTime EndDate { get; set; }
+		public DateOnly? StartDate { get; set; }
+		public DateOnly? EndDate { get; set; }
 	}
 }

@@ -23,8 +23,6 @@ public partial class GymManagementContext : DbContext
 
     public virtual DbSet<Feedback> Feedbacks { get; set; }
 
-    public virtual DbSet<Image> Images { get; set; }
-
     public virtual DbSet<Member> Members { get; set; }
 
     public virtual DbSet<MemberPackage> MemberPackages { get; set; }
@@ -43,15 +41,15 @@ public partial class GymManagementContext : DbContext
     {
         modelBuilder.Entity<Admin>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Admin__3214EC27BBA5BFE4");
+            entity.HasKey(e => e.AdminId).HasName("PK__Admin__4A311D2F5087AF8A");
 
             entity.ToTable("Admin");
 
-            entity.HasIndex(e => e.Email, "UQ__Admin__A9D10534172C821C").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Admin__A9D105340CB43D54").IsUnique();
 
-            entity.HasIndex(e => e.UserName, "UQ__Admin__C9F28456CC524269").IsUnique();
+            entity.HasIndex(e => e.UserName, "UQ__Admin__C9F284569A7E5BF0").IsUnique();
 
-            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.AdminId).HasColumnName("Admin_id");
             entity.Property(e => e.Email)
                 .HasMaxLength(255)
                 .IsUnicode(false);
@@ -65,7 +63,7 @@ public partial class GymManagementContext : DbContext
 
         modelBuilder.Entity<Attendance>(entity =>
         {
-            entity.HasKey(e => e.AttendanceId).HasName("PK__Attendan__20D6A96887CC8AD0");
+            entity.HasKey(e => e.AttendanceId).HasName("PK__Attendan__20D6A968EC323DC6");
 
             entity.ToTable("Attendance");
 
@@ -85,7 +83,7 @@ public partial class GymManagementContext : DbContext
 
         modelBuilder.Entity<Class>(entity =>
         {
-            entity.HasKey(e => e.ClassId).HasName("PK__Classes__B0970537B25AC4E5");
+            entity.HasKey(e => e.ClassId).HasName("PK__Classes__B09705377A7AB106");
 
             entity.Property(e => e.ClassId).HasColumnName("Class_Id");
             entity.Property(e => e.ClassName)
@@ -102,7 +100,7 @@ public partial class GymManagementContext : DbContext
 
         modelBuilder.Entity<Feedback>(entity =>
         {
-            entity.HasKey(e => e.FeedbackId).HasName("PK__Feedback__CDC95E709048D77E");
+            entity.HasKey(e => e.FeedbackId).HasName("PK__Feedback__CDC95E708D4B1036");
 
             entity.ToTable("Feedback");
 
@@ -118,33 +116,17 @@ public partial class GymManagementContext : DbContext
                 .HasConstraintName("FK__Feedback__traine__59063A47");
         });
 
-        modelBuilder.Entity<Image>(entity =>
-        {
-            entity.HasKey(e => e.ImagesId).HasName("PK__Images__34E687F78CBE3CEE");
-
-            entity.Property(e => e.ImagesId).HasColumnName("Images_id");
-            entity.Property(e => e.ImagesName)
-                .HasMaxLength(255)
-                .IsUnicode(false)
-                .HasColumnName("Images_name");
-            entity.Property(e => e.TrainerId).HasColumnName("Trainer_id");
-
-            entity.HasOne(d => d.Trainer).WithMany(p => p.Images)
-                .HasForeignKey(d => d.TrainerId)
-                .HasConstraintName("FK__Images__Images_n__5BE2A6F2");
-        });
-
         modelBuilder.Entity<Member>(entity =>
         {
-            entity.HasKey(e => e.MemberId).HasName("PK__Member__42A18B6FFBD92ECF");
+            entity.HasKey(e => e.MemberId).HasName("PK__Member__42A18B6FD0F9A710");
 
             entity.ToTable("Member");
 
-            entity.HasIndex(e => e.PhoneNumber, "UQ__Member__85FB4E3856CDD8A1").IsUnique();
+            entity.HasIndex(e => e.PhoneNumber, "UQ__Member__85FB4E38EF4C86CA").IsUnique();
 
-            entity.HasIndex(e => e.Email, "UQ__Member__A9D10534781044FA").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Member__A9D105349B7D1082").IsUnique();
 
-            entity.HasIndex(e => e.UserName, "UQ__Member__C9F28456636C29CB").IsUnique();
+            entity.HasIndex(e => e.UserName, "UQ__Member__C9F284560C1D18A5").IsUnique();
 
             entity.Property(e => e.MemberId).HasColumnName("Member_id");
             entity.Property(e => e.CreateDate)
@@ -172,7 +154,7 @@ public partial class GymManagementContext : DbContext
 
         modelBuilder.Entity<MemberPackage>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Member_P__3214EC27374A7A0D");
+            entity.HasKey(e => e.Id).HasName("PK__Member_P__3214EC2711816CA6");
 
             entity.ToTable("Member_Package");
 
@@ -191,9 +173,9 @@ public partial class GymManagementContext : DbContext
 
         modelBuilder.Entity<Package>(entity =>
         {
-            entity.HasKey(e => e.PackageId).HasName("PK__Packages__B7FDB53277E0870B");
+            entity.HasKey(e => e.PackageId).HasName("PK__Packages__B7FDB5328B42A09C");
 
-            entity.HasIndex(e => e.PackageName, "UQ__Packages__6AB969E32360C87A").IsUnique();
+            entity.HasIndex(e => e.PackageName, "UQ__Packages__6AB969E3ED7031E6").IsUnique();
 
             entity.Property(e => e.PackageId)
                 .ValueGeneratedNever()
@@ -203,6 +185,9 @@ public partial class GymManagementContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
             entity.Property(e => e.Discount).HasColumnType("decimal(5, 2)");
+            entity.Property(e => e.Duration)
+                .HasMaxLength(255)
+                .IsUnicode(false);
             entity.Property(e => e.PackageName)
                 .HasMaxLength(100)
                 .IsUnicode(false)
@@ -211,7 +196,7 @@ public partial class GymManagementContext : DbContext
 
         modelBuilder.Entity<Payment>(entity =>
         {
-            entity.HasKey(e => e.PaymentId).HasName("PK__Payment__DA6C7FC1C7E94DCC");
+            entity.HasKey(e => e.PaymentId).HasName("PK__Payment__DA6C7FC111398863");
 
             entity.ToTable("Payment");
 
@@ -243,15 +228,15 @@ public partial class GymManagementContext : DbContext
 
         modelBuilder.Entity<Trainer>(entity =>
         {
-            entity.HasKey(e => e.TrainerId).HasName("PK__Trainer__8B0DBD691CD9FD14");
+            entity.HasKey(e => e.TrainerId).HasName("PK__Trainer__8B0DBD69B9B0B008");
 
             entity.ToTable("Trainer");
 
-            entity.HasIndex(e => e.PhoneNumber, "UQ__Trainer__85FB4E38E576713F").IsUnique();
+            entity.HasIndex(e => e.PhoneNumber, "UQ__Trainer__85FB4E38A3530769").IsUnique();
 
-            entity.HasIndex(e => e.Email, "UQ__Trainer__A9D10534D512D5A4").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Trainer__A9D10534B883CD38").IsUnique();
 
-            entity.HasIndex(e => e.UserName, "UQ__Trainer__C9F28456AF965CA1").IsUnique();
+            entity.HasIndex(e => e.UserName, "UQ__Trainer__C9F28456AB878290").IsUnique();
 
             entity.Property(e => e.TrainerId).HasColumnName("Trainer_id");
             entity.Property(e => e.Bio)
@@ -274,6 +259,10 @@ public partial class GymManagementContext : DbContext
             entity.Property(e => e.Status)
                 .HasMaxLength(255)
                 .IsUnicode(false);
+            entity.Property(e => e.UserImg)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("User_img");
             entity.Property(e => e.UserName)
                 .HasMaxLength(255)
                 .IsUnicode(false);

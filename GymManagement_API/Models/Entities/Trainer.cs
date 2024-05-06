@@ -19,6 +19,8 @@ public partial class Trainer
 
     public string Password { get; set; } = null!;
 
+    public string? UserImg { get; set; }
+
     public string? Bio { get; set; }
 
     public DateTime? CreateDate { get; set; }
@@ -28,6 +30,4 @@ public partial class Trainer
     public virtual ICollection<Class> Classes { get; set; } = new List<Class>();
 
     public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
-
-    public virtual ICollection<Image> Images { get; set; } = new List<Image>();
 }

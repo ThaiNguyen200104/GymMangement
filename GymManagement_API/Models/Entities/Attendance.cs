@@ -11,7 +11,7 @@ public partial class Attendance
 
     public int? ClassId { get; set; }
 
-    public DateOnly? AttendanceDate { get; set; }
+    public DateTime AttendanceDate { get; set; }
 
     public virtual Class? Class { get; set; }
 

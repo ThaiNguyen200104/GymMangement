@@ -11,7 +11,7 @@ public partial class Feedback
 
     public string? Feedback1 { get; set; }
 
-    public DateOnly? FeedbackDate { get; set; }
+    public DateTime FeedbackDate { get; set; }
 
     public virtual Trainer? Trainer { get; set; }
 }

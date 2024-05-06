@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GymManagement_API.Models.AccountModels;
+namespace GymManagement.Models.AccountModels;
 
 public class SignupModel
 {

@@ -1,5 +1,4 @@
-﻿using GymManagement_API.Models.AccountModels;
-using GymManagement_API.Models.Entities;
+﻿using GymManagement_API.Models.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

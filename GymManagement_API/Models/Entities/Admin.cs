@@ -5,7 +5,7 @@ namespace GymManagement_API.Models.Entities;
 
 public partial class Admin
 {
-    public int Id { get; set; }
+    public int AdminId { get; set; }
 
     public string Email { get; set; } = null!;
 

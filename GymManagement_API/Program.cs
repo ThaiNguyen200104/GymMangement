@@ -24,6 +24,9 @@ builder.Services.AddSession(options =>
 	options.Cookie.IsEssential = true;
 });
 
+builder.Services.AddMvc().AddSessionStateTempDataProvider();
+
+
 
 var app = builder.Build();
 
@@ -33,6 +36,16 @@ if (app.Environment.IsDevelopment())
 	app.UseSwagger();
 	app.UseSwaggerUI();
 }
+
+app.MapGet("/Admin", context =>
+{
+	var admin_id = context.Session.GetString("Admin_id");
+	if (admin_id == null)
+	{
+		context.Response.Redirect("/home");
+	}
+	return Task.CompletedTask;
+});
 
 app.UseCors("AllowAllOrigins");
 

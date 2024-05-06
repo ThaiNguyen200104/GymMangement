@@ -1,14 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\dev\\PluralSight\\GymManagement\\",
+  "WorkspaceRootPath": "D:\\dev\\GymMangement\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5FCADB59-16B9-49C3-AC59-4BACA1DF9CC1}|GymManagement_API\\GymManagement_API.csproj|d:\\dev\\pluralsight\\gymmanagement\\gymmanagement_api\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5FCADB59-16B9-49C3-AC59-4BACA1DF9CC1}|GymManagement_API\\GymManagement_API.csproj|d:\\dev\\gymmangement\\gymmanagement_api\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5FCADB59-16B9-49C3-AC59-4BACA1DF9CC1}|GymManagement_API\\GymManagement_API.csproj|solutionrelative:gymmanagement_api\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5FCADB59-16B9-49C3-AC59-4BACA1DF9CC1}|GymManagement_API\\GymManagement_API.csproj|d:\\dev\\pluralsight\\gymmanagement\\gymmanagement_api\\controllers\\packagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5FCADB59-16B9-49C3-AC59-4BACA1DF9CC1}|GymManagement_API\\GymManagement_API.csproj|d:\\dev\\gymmangement\\gymmanagement_api\\controllers\\packagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5FCADB59-16B9-49C3-AC59-4BACA1DF9CC1}|GymManagement_API\\GymManagement_API.csproj|solutionrelative:gymmanagement_api\\controllers\\packagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5FCADB59-16B9-49C3-AC59-4BACA1DF9CC1}|GymManagement_API\\GymManagement_API.csproj|d:\\dev\\gymmangement\\gymmanagement_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5FCADB59-16B9-49C3-AC59-4BACA1DF9CC1}|GymManagement_API\\GymManagement_API.csproj|solutionrelative:gymmanagement_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,8 +22,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 11,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\dev\\GymMangement\\GymManagement_API\\Program.cs",
+              "RelativeDocumentMoniker": "GymManagement_API\\Program.cs",
+              "ToolTip": "D:\\dev\\GymMangement\\GymManagement_API\\Program.cs",
+              "RelativeToolTip": "GymManagement_API\\Program.cs",
+              "ViewState": "AQIAABcAAAAAAAAAAAAAwCkAAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-06T05:51:44.129Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -60,11 +77,11 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "PackageController.cs",
-              "DocumentMoniker": "D:\\dev\\PluralSight\\GymManagement\\GymManagement_API\\Controllers\\PackageController.cs",
+              "DocumentMoniker": "D:\\dev\\GymMangement\\GymManagement_API\\Controllers\\PackageController.cs",
               "RelativeDocumentMoniker": "GymManagement_API\\Controllers\\PackageController.cs",
-              "ToolTip": "D:\\dev\\PluralSight\\GymManagement\\GymManagement_API\\Controllers\\PackageController.cs",
+              "ToolTip": "D:\\dev\\GymMangement\\GymManagement_API\\Controllers\\PackageController.cs",
               "RelativeToolTip": "GymManagement_API\\Controllers\\PackageController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-26T06:00:49.455Z",
               "EditorCaption": ""
@@ -73,11 +90,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "AccountController.cs",
-              "DocumentMoniker": "D:\\dev\\PluralSight\\GymManagement\\GymManagement_API\\Controllers\\AccountController.cs",
+              "DocumentMoniker": "D:\\dev\\GymMangement\\GymManagement_API\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "GymManagement_API\\Controllers\\AccountController.cs",
-              "ToolTip": "D:\\dev\\PluralSight\\GymManagement\\GymManagement_API\\Controllers\\AccountController.cs",
+              "ToolTip": "D:\\dev\\GymMangement\\GymManagement_API\\Controllers\\AccountController.cs",
               "RelativeToolTip": "GymManagement_API\\Controllers\\AccountController.cs",
-              "ViewState": "AQIAACMAAAAAAAAAAAAswDsAAAAgAAAA",
+              "ViewState": "AQIAAOAAAAAAAAAAAAAmwPsAAABAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-18T06:58:58.596Z",
               "EditorCaption": ""

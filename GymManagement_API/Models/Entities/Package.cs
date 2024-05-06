@@ -11,7 +11,7 @@ public partial class Package
 
     public decimal? Cost { get; set; }
 
-    public int? Duration { get; set; }
+    public string? Duration { get; set; }
 
     public decimal? Discount { get; set; }
 

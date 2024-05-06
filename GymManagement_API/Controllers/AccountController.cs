@@ -1,6 +1,5 @@
 ﻿using GymManagement_API.Models.AccountModels;
 using GymManagement_API.Models.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
@@ -20,7 +19,7 @@ public class MemberController : ControllerBase
 		{
 			var isTrainer = isTrainerEmail(model.Email);
 			var emailExists = await _context.Members.AnyAsync(m => m.Email == model.Email);
-			var emailTrainerExists = await _context.Trainers.AnyAsync(t=> t.Email == model.Email);
+			var emailTrainerExists = await _context.Trainers.AnyAsync(t => t.Email == model.Email);
 			var usernameExists = await _context.Members.AnyAsync(m => m.UserName == model.Username);
 			var phoneExists = await _context.Members.AnyAsync(m => m.PhoneNumber == model.PhoneNumber);
 
@@ -29,7 +28,7 @@ public class MemberController : ControllerBase
 				return BadRequest(new { message = "Some of member information are already exsists, please try again!" });
 			}
 
-			if(!isTrainer)
+			if (!isTrainer)
 			{
 				var member = new Member
 				{
@@ -55,7 +54,7 @@ public class MemberController : ControllerBase
 			};
 			_context.Trainers.Add(trainer);
 			await _context.SaveChangesAsync();
-			
+
 		}
 		return BadRequest(ModelState);
 	}

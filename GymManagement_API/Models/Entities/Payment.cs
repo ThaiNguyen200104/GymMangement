@@ -11,13 +11,9 @@ public partial class Payment
 
     public string CardName { get; set; } = null!;
 
-    public string? TransactionName { get; set; }
-
     public int Amount { get; set; }
 
-    public DateTime? TransactionDate { get; set; }
-
-    public DateOnly ExpiryDate { get; set; }
+    public DateTime ExpiryDate { get; set; }
 
     public virtual MemberPackage PaymentNavigation { get; set; } = null!;
 }

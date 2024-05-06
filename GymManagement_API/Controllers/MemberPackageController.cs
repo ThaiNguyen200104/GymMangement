@@ -1,4 +1,4 @@
-﻿using GymManagement.Models.PackageModel;
+﻿using GymManagement.Models.PackageModels;
 using GymManagement_API.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
@@ -7,22 +7,21 @@ using Microsoft.EntityFrameworkCore;
 namespace GymManagement_API.Controllers;
 [Route("api/[controller]")]
 [ApiController]
-public class PackageController(GymManagementContext context) : Controller
+public class MemberPackageController(GymManagementContext context) : Controller
 {
 	private readonly GymManagementContext _context = context;
 
-	[HttpGet]
-	public async Task<IActionResult> GetPackages() => Ok(await _context.Packages.ToListAsync());
+	public async Task<IActionResult> GetMemPacks() => Ok(await _context.MemberPackages.Where(m => m.EndDate < DateTime.Now).ToListAsync());
 
 	[HttpGet("{id}")]
-	public async Task<IActionResult> GetPackage(int id)
+	public async Task<IActionResult> GetMemPack(int id)
 	{
 		try
 		{
-			var pack = await _context.Packages.FirstOrDefaultAsync(p => p.PackageId == id);
-			if (pack == null) return NotFound();
+			var cl = await _context.MemberPackages.FirstOrDefaultAsync(p => p.Id == id);
+			if (cl == null) return NotFound();
 
-			return Ok(pack);
+			return Ok(cl);
 		}
 		catch (DbUpdateException ex)
 		{
@@ -31,25 +30,25 @@ public class PackageController(GymManagementContext context) : Controller
 	}
 
 	[HttpPost]
-	public async Task<IActionResult> PostPackage([FromForm] PackageModel model)
+	public async Task<IActionResult> PostMemPack([FromForm] MemberPackageModel model)
 	{
 		var admin = HttpContext.Session.GetString("Admin_id");
 		if (admin == null) return RedirectToAction("LoginAdmin", "Admin");
 
-		if (!ModelState.IsValid) return BadRequest(ModelState);
-
+		if (ModelState.IsValid) return BadRequest(ModelState);
 		try
 		{
-			Package pack = new()
+			MemberPackage mp = new()
 			{
-				PackageName = model.PackageName,
-				Cost = model.Cost,
-				Duration = model.Duration
+				PackageId = model.PackageId,
+				MemberId = model.MemberId,
+				StartDate = model.StartDate,
+				EndDate = model.EndDate,
 			};
-			_context.Add(pack);
+			_context.Add(mp);
 			await _context.SaveChangesAsync();
 
-			return RedirectToAction(nameof(GetPackage));
+			return RedirectToAction(nameof(GetMemPacks));
 		}
 		catch (Exception ex)
 		{
@@ -58,17 +57,17 @@ public class PackageController(GymManagementContext context) : Controller
 	}
 
 	[HttpPut("{id}")]
-	public async Task<IActionResult> PutPackage(int id, [FromBody] PackageModel model)
+	public async Task<IActionResult> PutMemPack(int id, [FromBody] MemberPackageModel model)
 	{
 		try
 		{
-			var pack = await _context.Packages.FindAsync(id);
-			if (pack == null) return NotFound();
+			var mp = await _context.MemberPackages.FindAsync(id);
+			if (mp == null) return NotFound();
 
-			pack.PackageName = model.PackageName;
-			pack.Cost = model.Cost;
-			pack.Duration = model.Duration;
-			pack.Discount = model.Discount;
+			mp.PackageId = model.PackageId;
+			mp.MemberId = model.MemberId;
+			mp.StartDate = model.StartDate;
+			mp.EndDate = model.EndDate;
 
 			try
 			{
@@ -76,7 +75,7 @@ public class PackageController(GymManagementContext context) : Controller
 			}
 			catch (DbUpdateConcurrencyException)
 			{
-				if (!PackageExists(model.PackageId))
+				if (!MemberPackageExists(id))
 				{
 					return NotFound();
 				}
@@ -88,21 +87,20 @@ public class PackageController(GymManagementContext context) : Controller
 		{
 			return HandleDbUpdateException(ex);
 		}
-
 	}
 
 	[HttpDelete("{id}")]
-	public async Task<IActionResult> DeletePackage(int id)
+	public async Task<IActionResult> DeleteMemPack(int id)
 	{
 		try
 		{
-			var pack = await _context.Packages.FindAsync(id);
-			if (pack == null) return NotFound();
-			
-			_context.Packages.Remove(pack);
+			var mp = await _context.MemberPackages.FindAsync(id);
+			if (mp == null) return NotFound();
+
+			_context.MemberPackages.Remove(mp);
 			await _context.SaveChangesAsync();
 
-			return Ok(pack);
+			return Ok(mp);
 		}
 		catch (DbUpdateException ex)
 		{
@@ -110,7 +108,7 @@ public class PackageController(GymManagementContext context) : Controller
 		}
 	}
 
-	private bool PackageExists(int id) => _context.Packages.Any(e => e.PackageId == id);
+	private bool MemberPackageExists(int id) => _context.MemberPackages.Any(e => e.Id == id);
 
 	private IActionResult HandleDbUpdateException(DbUpdateException ex)
 	{
@@ -121,4 +119,3 @@ public class PackageController(GymManagementContext context) : Controller
 		return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occurred. Details: " + ex.Message);
 	}
 }
-

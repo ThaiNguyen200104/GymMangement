@@ -11,6 +11,9 @@ public class ProfileModel
 	public string PackageName { get; set; }
 	public DateTime StartDate { get; set; }
 	public DateTime EndDate { get; set; }
+	public List<MemberPackage> memPack {  get; set; } = new List<MemberPackage>();
+	public DateTime StartDate { get; set; }
+	public DateTime EndDate { get; set; }
 	public List<MemberPackage> memPack { get; set; } = new List<MemberPackage>();
 
 	public class MemberPackage

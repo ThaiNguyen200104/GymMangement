@@ -212,13 +212,6 @@ public partial class GymManagementContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("card_Number");
             entity.Property(e => e.ExpiryDate).HasColumnName("expiry_date");
-            entity.Property(e => e.TransactionDate)
-                .HasColumnType("datetime")
-                .HasColumnName("Transaction_Date");
-            entity.Property(e => e.TransactionName)
-                .HasMaxLength(255)
-                .IsUnicode(false)
-                .HasColumnName("Transaction_Name");
 
             entity.HasOne(d => d.PaymentNavigation).WithOne(p => p.Payment)
                 .HasForeignKey<Payment>(d => d.PaymentId)
